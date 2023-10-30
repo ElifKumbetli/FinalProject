@@ -1,10 +1,19 @@
-﻿namespace ConsolUI
+﻿using Business.Concrete;
+using DataAccess.Concrete.InMemory;
+
+
+namespace ConsolUI
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            ProductManager productManager = new ProductManager(new InMemoryProductDal());
+
+            foreach (var product in productManager.GetAll())
+            {
+                Console.WriteLine( product.ProductName);
+            }
         }
     }
 }
