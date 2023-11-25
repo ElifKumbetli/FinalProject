@@ -1,4 +1,4 @@
-﻿using Entities.Abstact;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,6 @@ namespace Entities.Concrete
     {
         public int CategoryId { get; set; }
 
-        public int CategoryName { get; set; }
+        public string? CategoryName { get; set; }
     }
 }
