@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
      {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server =(localdb)\MSSQLLocalDB;Database= Northwind;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server =(localdb)\MSSQLLocalDB;Trusted_Connection=true");
         }
 
         //Hangi class hangi tabloya karşılık geliyor

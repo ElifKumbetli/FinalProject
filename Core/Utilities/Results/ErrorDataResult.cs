@@ -24,7 +24,7 @@ namespace Core.Utilities.Results
 
         }
 
-        public ErrorDataResult():base(default, false)
+        public ErrorDataResult() : base(default, false)
         {
 
         }
