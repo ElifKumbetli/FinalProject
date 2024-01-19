@@ -40,10 +40,11 @@ namespace Business.Concrete
         {
             //İş kodları -->if ler var
             //Yetkisi var mı ? 
-            if (DateTime.Now.Hour==23)
-            {
-                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 21)
+            //{
+            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            //}
+
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductsListed);
 
         }
@@ -65,7 +66,7 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
-            if (DateTime.Now.Hour == 0)
+            if (DateTime.Now.Hour == 21)
             {
                 return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
             }
@@ -74,7 +75,8 @@ namespace Business.Concrete
 
         IDataResult<List<Product>> IProductService.GetAllByCategoryId(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == id));
+
         }
 
         IDataResult<Product> IProductService.GetById(int productId)
