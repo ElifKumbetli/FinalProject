@@ -22,6 +22,7 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+       
         public IResult Add(Product product)
         {
             //Business codes --> iş kodları
@@ -39,11 +40,11 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAll()
         {
             //İş kodları -->if ler var
-            //Yetkisi var mı ? 
-            //if (DateTime.Now.Hour == 21)
-            //{
-            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            //}
+           // Yetkisi var mı ? 
+            if (DateTime.Now.Hour == 21)
+            {
+                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            }
 
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductsListed);
 
@@ -81,7 +82,7 @@ namespace Business.Concrete
 
         IDataResult<Product> IProductService.GetById(int productId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
         }
 
         IDataResult<List<Product>> IProductService.GetByUnitPrice(decimal min, decimal max)
