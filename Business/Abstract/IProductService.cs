@@ -24,5 +24,8 @@ namespace Business.Abstract
 
         IResult Add(Product product);//Bir şey döndürmüyor void
 
+        IResult Update(Product product);
+
+
     }
 }
